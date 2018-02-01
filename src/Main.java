@@ -24,13 +24,13 @@ public class Main {
         }
         */
         lireFichier(grille);
-        System.out.println(grille.toString());
-        System.out.println(grille.getVoisines(-3,-16));
+        //System.out.println(grille.toString());
+        //System.out.println(grille.getVoisines(-3,-16));
         Frame frame = new Frame(ll,lc);
 
         dessinerMatrice(frame,grille);
 
-        for(int i = 0; i<1000;i++){
+        for(int i = 0; i<1;i++){
             grille = calculerNextGen(grille);
             resetMatrice(frame);
             dessinerMatrice(frame,grille);
@@ -74,7 +74,7 @@ public class Main {
         frame.add( frame.pannel);
         frame.setVisible(true);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -129,23 +129,40 @@ public class Main {
     }
 
     private static List calculerNextGen(List grille){
+        int lminloc,lmaxloc,cminloc,cmaxloc;
+        lminloc=lmaxloc=cminloc=cmaxloc=0;
         List nextGen = new List();
         Maillon a = grille.tete;
         int sum =0;
-        for(int i = lmin; i< lmax;i++) {
+        for(int i = lmin-1; i< lmax+1;i++) {
             //System.out.println("ligne "+i+"\n_________");
-            for (int j = cmin; j < cmax; j++) {
+            for (int j = cmin-1; j < cmax+1; j++) {
                 sum = calculerVoisines(i,j,grille);
+                System.out.println(sum);
                 if (a != null){
-                   // System.out.println(a.toString());
+
                     if ((a.getLigne()) == i && (a.getColonne()) == j) {
-                        if(sum == 2 || sum == 3) nextGen.addMaillon(new Maillon(i,j));
+                        if(sum == 2 || sum == 3){
+                            nextGen.addMaillon(new Maillon(i,j));
+                        }
+                        System.out.println(a.toString());
                         a = a.getSuiv();
                     }
                 }
-                if(sum==3)nextGen.addMaillon(new Maillon(i,j));
+                if(sum==3){
+                    nextGen.addMaillon(new Maillon(i,j));
+                    if(i<lmin)lminloc=i;
+                    if(i>lmax)lmaxloc=i;
+                    if(j<cmin)cminloc=j;
+                    if(j>cmax)cmaxloc=j;
+                }
             }
         }
+        cmin=cminloc;
+        cmax=cmaxloc;
+        lmin=lminloc;
+        lmax=lmaxloc;
+
         return nextGen;
     }
 }

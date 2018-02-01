@@ -50,9 +50,9 @@ public class List {
         Maillon a = tete;
         int sum=0;
         while(a!=null){
-            if(a.getLigne()==(ligne-1) && a.getColonne()==(colonne+1))sum++;
-            if(a.getLigne()==(ligne-1) && a.getColonne()==(colonne-1))sum++;
-            if(a.getLigne()==(ligne-1)&& a.getColonne()==(colonne))sum++;
+            if(a.getLigne()==ligne-1 && a.getColonne()==(colonne+1))sum++;
+            if(a.getLigne()==ligne-1 && a.getColonne()==(colonne-1))sum++;
+            if(a.getLigne()==ligne-1&& a.getColonne()==(colonne))sum++;
             if(a.getLigne()==(ligne+1) && a.getColonne()==(colonne-1))sum++;
             if(a.getLigne()==(ligne+1) && a.getColonne()==(colonne+1))sum++;
             if(a.getLigne()==(ligne+1) && a.getColonne()==(colonne))sum++;

@@ -11,7 +11,7 @@ public class Frame extends JFrame {
         super("Cyka nuggets");
         this.lc=lc;
         this.ll=ll;
-        setSize(5*2*this.lc, 5*2*this.ll);
+        setSize(10*5*this.lc, 10*5*this.ll);
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         //pannel.setLayout(new GridLayout(2*this.ll, 2*lc));
@@ -44,7 +44,7 @@ public class Frame extends JFrame {
         public void paintComponent(Graphics g){
             Maillon a = grille.tete;
             while(a!=null){
-                g.fillOval(5*(this.colonne+a.getColonne()),5*(this.ligne+a.getLigne()),5,5);
+                g.fillOval(10*(this.colonne+a.getColonne()),10*(this.ligne+a.getLigne()),10,10);
                 a=a.getSuiv();
             }
 

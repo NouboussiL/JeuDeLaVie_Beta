@@ -133,12 +133,12 @@ public class Main {
         Maillon a = grille.tete;
         int sum =0;
         for(int i = lmin; i< lmax;i++) {
-            System.out.println("ligne "+i+"\n_________");
+            //System.out.println("ligne "+i+"\n_________");
             for (int j = cmin; j < cmax; j++) {
                 sum = calculerVoisines(i,j,grille);
                 if (a != null){
-                    System.out.println(a.toString());
-                    if ((a.getLigne()) == j && (a.getColonne()) == i) {
+                   // System.out.println(a.toString());
+                    if ((a.getLigne()) == i && (a.getColonne()) == j) {
                         if(sum == 2 || sum == 3) nextGen.addMaillon(new Maillon(i,j));
                         a = a.getSuiv();
                     }
